@@ -1,0 +1,376 @@
+/* ==============================
+   DARK FUTURISTA — FRANK RAMOS ROCA v2.1
+   Fondo opaco fijo en portada
+============================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg-color: #0a0a0f;
+  --bg-secondary: #13131a;
+  --text-color: #eaeaea;
+  --accent: #00e5ff;
+  --accent-secondary: #00aaff;
+  --card-bg: #1a1a24;
+  --shadow: rgba(0, 229, 255, 0.15);
+  --transition: all 0.4s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.2rem 6%;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInDown 1s ease;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  background: url('https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/code.svg') center/contain no-repeat;
+  filter: drop-shadow(0 0 3px var(--accent));
+  opacity: 0.9;
+}
+
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: var(--transition);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+/* ==============================
+   HERO / PORTADA — con fondo fijo
+============================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 9rem 2rem 5rem;
+  background: linear-gradient(180deg, rgba(10,10,15,0.9) 0%, rgba(18,18,27,0.95) 100%);
+  overflow: hidden;
+}
+
+/* Fondo opaco fijo (no se mueve al hacer scroll) */
+.hero::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1581091012184-5c46a6d46b3d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 850px;
+  animation: fadeInUp 1.2s ease;
+}
+
+.user-photo {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit: cover;
+  box-shadow: 0 0 25px var(--shadow);
+  margin-bottom: 1.5rem;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.user-photo:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 0 35px var(--accent);
+}
+
+/* ==============================
+   ABOUT SECTION
+============================== */
+.about {
+  padding: 7rem 8%;
+  background: var(--bg-secondary);
+}
+
+.about h2 {
+  text-align: center;
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+
+.about-content h3 {
+  color: var(--accent-secondary);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.tags span {
+  display: inline-block;
+  background: var(--card-bg);
+  color: var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  margin: 0.3rem;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  box-shadow: 0 0 10px var(--shadow);
+}
+
+.tags span:hover {
+  background: var(--accent);
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* ==============================
+   PROYECTOS
+============================== */
+.projects {
+  padding: 7rem 8%;
+  text-align: center;
+  background: var(--bg-color);
+}
+
+.projects h2 {
+  color: var(--accent);
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--shadow);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 35px var(--accent-secondary);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: var(--transition);
+}
+
+.card:hover img {
+  filter: brightness(1);
+}
+
+/* ==============================
+   CUADERNO — NUEVO DISEÑO
+============================== */
+.cuaderno {
+  background: var(--bg-secondary);
+  padding: 7rem 8%;
+  text-align: center;
+}
+
+.cuaderno h2 {
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  animation: fadeIn 1s ease;
+}
+
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.week-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 240px;
+  border-radius: 15px;
+  overflow: hidden;
+  color: var(--text-color);
+  background: var(--card-bg);
+  text-decoration: none;
+  box-shadow: 0 0 20px var(--shadow);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+.week-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.85) 100%);
+  z-index: 1;
+}
+
+.week-box span {
+  position: relative;
+  z-index: 2;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 1rem;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.week-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px var(--accent);
+}
+
+/* ==============================
+   REFLEXIÓN FINAL
+============================== */
+.reflexion {
+  background: var(--bg-color);
+  padding: 7rem 8%;
+  text-align: center;
+}
+
+.reflexion h2 {
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.reflexion-item {
+  display: none;
+  font-size: 1.2rem;
+  color: #dcdcdc;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.reflexion-item.active {
+  display: block;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+.footer {
+  background: #0a0a0f;
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* ==============================
+   ANIMACIONES GLOBALES
+============================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 768px) {
+  .navbar ul { display: none; }
+  .hero h2 { font-size: 1.6rem; }
+  .hero h3 { font-size: 1rem; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .weeks-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .week-box { height: 180px; }
+}
